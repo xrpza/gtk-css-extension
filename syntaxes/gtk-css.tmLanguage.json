@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "GTK CSS",
+  "scopeName": "source.gtk-css",
+  "patterns": [
+    { "include": "#gtk-define-color" },
+    { "include": "#gtk-color-functions" },
+    { "include": "#gtk-color-reference" },
+    { "include": "#gtk-prefixed-properties" },
+    { "include": "#gtk-element-selectors" },
+    { "include": "source.css" }
+  ],
+  "repository": {
+
+    "gtk-define-color": {
+      "comment": "Matches: @define-color name value;",
+      "name": "meta.at-rule.define-color.gtk-css",
+      "begin": "(@define-color)\\s+([a-zA-Z_][a-zA-Z0-9_-]*)\\s*",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.at-rule.define-color.gtk-css" },
+        "2": { "name": "variable.other.color-name.gtk-css" }
+      },
+      "end": ";",
+      "endCaptures": {
+        "0": { "name": "punctuation.terminator.rule.css" }
+      },
+      "patterns": [
+        { "include": "#gtk-color-functions" },
+        { "include": "#gtk-color-reference" },
+        { "include": "#css-color-literal" }
+      ]
+    },
+
+    "gtk-color-reference": {
+      "comment": "Matches GTK named color variables: @color_name — excludes standard CSS at-rules",
+      "name": "variable.other.color-reference.gtk-css",
+      "match": "@(?!(import|media|keyframes|charset|font-face|supports|namespace|page|layer|container|document|viewport|counter-style|define-color|import|apply|custom-media|color-profile|property|starting-style)\\b)[a-zA-Z_][a-zA-Z0-9_-]*"
+    },
+
+    "gtk-color-functions": {
+      "comment": "Matches GTK built-in color functions: alpha(), shade(), mix(), lighter(), darker()",
+      "name": "meta.function.color.gtk-css",
+      "begin": "\\b(alpha|shade|mix|lighter|darker|color)\\s*(\\()",
+      "beginCaptures": {
+        "1": { "name": "support.function.color.gtk-css" },
+        "2": { "name": "punctuation.section.function.begin.bracket.round.css" }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": { "name": "punctuation.section.function.end.bracket.round.css" }
+      },
+      "patterns": [
+        { "include": "#gtk-color-reference" },
+        { "include": "#css-color-literal" },
+        {
+          "name": "constant.numeric.css",
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+        },
+        {
+          "name": "punctuation.separator.list.comma.css",
+          "match": ","
+        }
+      ]
+    },
+
+    "gtk-prefixed-properties": {
+      "comment": "GTK-specific CSS properties prefixed with -gtk-",
+      "name": "meta.property-name.gtk-css",
+      "match": "(-gtk-[a-z][a-z0-9-]*)\\s*:",
+      "captures": {
+        "1": { "name": "support.type.property-name.gtk-css" }
+      }
+    },
+
+    "gtk-element-selectors": {
+      "comment": "GTK widget element names used as CSS type selectors",
+      "name": "entity.name.tag.gtk-css",
+      "match": "(?<![\\w#.])\\b(window|box|grid|stack|stackswitcher|notebook|paned|scrolledwindow|scrollbar|trough|slider|button|checkbutton|radiobutton|togglebutton|menubutton|entry|spinbutton|switch|scale|progressbar|levelbar|separator|label|image|spinner|statusbar|headerbar|titlebar|actionbar|searchbar|popover|popovermenu|menu|menubar|menuitem|submenuitem|modelbutton|dialog|messagedialog|filechooser|colorbutton|fontbutton|tooltip|frame|aspectframe|expander|revealer|listbox|listboxrow|flowbox|flowboxchild|iconview|treeview|treeviewcolumn|cellrenderer|combobox|toolbar|toolbutton|toolitem|calendar|textview|textbuffer|viewport|overshoot|undershoot|decoration|csd|row|column|sidebar|overlay|socket|plug|offscreenwindow|infobar|osd|linked|inline-toolbar|raised|suggested-action|destructive-action|flat|circular|background|primary-toolbar|secondary-toolbar)\\b"
+    },
+
+    "css-color-literal": {
+      "patterns": [
+        {
+          "name": "constant.other.color.rgb-value.css",
+          "match": "#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b"
+        },
+        {
+          "name": "support.constant.color.w3c-standard-color-name.css",
+          "match": "\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow|transparent|currentColor|inherit|initial|unset|revert)\\b"
+        }
+      ]
+    }
+  }
+}

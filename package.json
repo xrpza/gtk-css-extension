@@ -1,0 +1,58 @@
+{
+  "name": "gtk-css",
+  "displayName": "GTK CSS",
+  "description": "Syntax highlighting and IntelliSense for GTK-specific CSS: @define-color, color functions (alpha, shade, mix), -gtk- properties, and GTK widget element selectors.",
+  "version": "0.3.0",
+  "publisher": "mmischitelli",
+  "main": "./extension.js",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e2030",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "gtk",
+    "css",
+    "waybar",
+    "gnome",
+    "gtk3",
+    "gtk4",
+    "syntax highlighting",
+    "define-color",
+    "intellisense"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmischitelli/gtk-css-extension"
+  },
+  "bugs": {
+    "url": "https://github.com/mmischitelli/gtk-css-extension/issues"
+  },
+  "license": "MIT",
+  "contributes": {
+    "languages": [
+      {
+        "id": "gtk-css",
+        "aliases": ["GTK CSS", "gtk-css"],
+        "extensions": [".gtk.css"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gtk-css",
+        "scopeName": "source.gtk-css",
+        "path": "./syntaxes/gtk-css.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.css": "css"
+        }
+      }
+    ]
+  }
+}
