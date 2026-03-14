@@ -2,7 +2,7 @@
   "name": "gtk-css",
   "displayName": "GTK CSS",
   "description": "Syntax highlighting and IntelliSense for GTK-specific CSS: @define-color, color functions (alpha, shade, mix), -gtk- properties, and GTK widget element selectors.",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "publisher": "mmischitelli",
   "main": "./extension.js",
   "icon": "icon.png",
@@ -39,8 +39,13 @@
     "languages": [
       {
         "id": "gtk-css",
-        "aliases": ["GTK CSS", "gtk-css"],
-        "extensions": [".gtk.css"],
+        "aliases": [
+          "GTK CSS",
+          "gtk-css"
+        ],
+        "extensions": [
+          ".gtk.css"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
