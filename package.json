@@ -3,7 +3,7 @@
   "displayName": "GTK CSS",
   "description": "Syntax highlighting and IntelliSense for GTK-specific CSS: @define-color, color functions (alpha, shade, mix), -gtk- properties, and GTK widget element selectors.",
   "version": "1.0.0",
-  "publisher": "mmischitelli",
+  "publisher": "mpmischitelli",
   "main": "./extension.js",
   "icon": "icon.png",
   "galleryBanner": {
