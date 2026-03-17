@@ -2,7 +2,7 @@
 'use strict';
 
 const fs = require('fs');
-const SERVER_LOG = '/home/mmischitelli/data/repos/gtk-css-extension/server_debug.log';
+const SERVER_LOG = '~/.cache/gtk-css-extension/server_debug.log';
 try {
   fs.writeFileSync(SERVER_LOG, 'Server Start: ' + new Date().toISOString() + '\n');
 } catch (e) {}
