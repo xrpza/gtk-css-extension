@@ -2,6 +2,11 @@
 
 All notable changes to the **GTK CSS** extension will be documented in this file.
 
+## [1.3.0] - 2026-03-19
+
+### Changed
+- Replace file-based logger with LSP-native logging and add debug-level gating (thanks Mark Rapoza!)
+
 ## [1.2.0] - 2026-03-15
 
 ### Added
