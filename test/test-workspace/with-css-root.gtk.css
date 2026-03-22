@@ -1,0 +1,6 @@
+/* @css-root: ./deploy */
+@import "remote.gtk.css";
+@define-color root_local #00ff00;
+window{
+    color: @remote_color;
+}

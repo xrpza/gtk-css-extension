@@ -1,4 +1,5 @@
 node_modules/
 *.vsix
+*.log
 .vscode-test/
 out/

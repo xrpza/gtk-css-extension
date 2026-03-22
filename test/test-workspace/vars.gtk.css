@@ -1,2 +1,2 @@
 @define-color base_color #ff0000;
-@define-color accent_color #00ff00;
+@define-color accent_color alpha(@base_color, 0.5);

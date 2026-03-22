@@ -2,6 +2,16 @@
 
 All notable changes to the **GTK CSS** extension will be documented in this file.
 
+## [1.5.0]
+
+### Added
+- `server/lib/css-utils.js`: new module exposing `resolveImportBase()` and `extractImports()` for use by both the LSP server and the test suite.
+- `/* @css-root: <path> */` directive: when present in a CSS file, the LSP uses the specified path as the base directory for `@import` resolution instead of the file's current location on disk. Supports absolute paths, relative paths, and `~` home directory expansion.
+- `test/suite/css_root.test.js`: 17 unit tests covering directive parsing, path resolution, `~` expansion, malformed directives, and circular import handling.
+
+### Changed
+- `server.js`: move `extractImports()` to `server/lib/css-utils.js` and import from there. Uses `resolveImportBase()` thus gaining support for the `@css-root` directive.
+
 ## [1.4.1] - 2026-03-22
 
 ### Added

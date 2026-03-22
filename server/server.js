@@ -18,6 +18,8 @@ let DiagnosticSeverity;
 
 /** @typedef {import('vscode-languageserver').InitializeResult} InitializeResult */
 
+const { resolveImportBase, extractImports } = require('./lib/css-utils');
+
 try {
   ({
     createConnection,
@@ -141,25 +143,6 @@ function getColorPreviewUri(color) {
   const cleanColor = color.trim();
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><rect width="16" height="16" fill="${cleanColor}" stroke="rgba(128,128,128,0.5)" stroke-width="1"/></svg>`;
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-}
-
-/**
- * Extracts all @import statements from text and returns absolute paths.
- * @param {string} text
- * @param {string} documentFsPath  absolute path of the current file
- * @returns {string[]}
- */
-function extractImports(text, documentFsPath) {
-  const dir = path.dirname(documentFsPath);
-  const result = [];
-  // Supports: @import "file.css"; @import 'file.css'; @import url("file.css");
-  const regex = /@import\s+(?:url\s*\(\s*)?['"]([^'"]+)['"]/g;
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    const resolved = path.resolve(dir, match[1]);
-    result.push(resolved);
-  }
-  return result;
 }
 
 /**

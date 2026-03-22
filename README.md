@@ -18,6 +18,20 @@ Define named color variables and reference them anywhere. The extension recursiv
 @define-color overlay alpha(@base, 0.9);
 ```
 
+### Deploy-path directive
+
+Since v1.5.0, if your CSS file is edited from a pre-deploy location, you can tell the LSP where the file will actually reside at runtime by adding this comment anywhere in the file (conventionally at the top):
+```css
+/* @css-root: ~/.config/gtk-4.0/gtk.css */
+```
+
+The LSP uses that path as the base directory for resolving `@import` chains instead of the file's current location on disk.
+
+Supported path forms:
+- absolute: `/* @css-root: /usr/share/themes/MyTheme/gtk-4.0 */`
+- home-relative: `/* @css-root: ~/.config/gtk-4.0 */`
+- relative to the current file: `/* @css-root: ../../dist/css */`
+
 ### Color variable IntelliSense
 Type `@` anywhere in a value and get instant completions for all colors defined with `@define-color` in the current file or any imported files — with the resolved value shown as detail.
 
