@@ -2,7 +2,7 @@
 
 All notable changes to the **GTK CSS** extension will be documented in this file.
 
-## [1.5.0]
+## [1.5.0] - 2026-03-22
 
 ### Added
 - `server/lib/css-utils.js`: new module exposing `resolveImportBase()` and `extractImports()` for use by both the LSP server and the test suite.
