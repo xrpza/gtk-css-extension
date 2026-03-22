@@ -2,6 +2,11 @@
 
 All notable changes to the **GTK CSS** extension will be documented in this file.
 
+## [1.4.1] - 2026-03-22
+
+### Added
+- Changelog reference in `package.json`
+
 ## [1.4.0] - 2026-03-22
 
 ### Added

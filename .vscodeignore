@@ -13,7 +13,6 @@ tsconfig.json
 .gitignore
 .vscodeignore
 README.md
-CHANGELOG.md
 **/*.map
 test/
 src/
